@@ -11,14 +11,6 @@ export default function ({item}) {
     </div>
   );
 }
-// export async function getServerSideProps(context) {
- 
-//   console.log(context);
-//   return {
-//     props: {},
-//   };
-// }
-
 
 export async function getServerSideProps({params}) {
     try {

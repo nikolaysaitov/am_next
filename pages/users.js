@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+
 import Link from "next/link";
 
 
@@ -23,29 +23,6 @@ function Users({ data }) {
 }
 export default Users;
 
-// export async function getStaticProps() {
-//     const response = await fetch('https://jsonplaceholder.typicode.com/users')
-//     const users =  await response.json()
-
-//     return {
-//         props: {users} }
-//   }
-
-// export async function getStaticProps() {
-//     setLoading(true)
-//   const url = "https://pim.impermebel.ru/offers/api/offers";
-
-//   const response = await fetch(url, {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({ page: 1, limit: 10, query: "" }),
-//   });
-//   const data = await response.json();
-//   console.log(data);
-//   return {
-//     props: { data },
-//   };
-// }
 export async function getStaticProps() {
     try {
     //   setLoading(true);
