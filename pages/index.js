@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Head from "next/head";
-
+import { Typography } from 'antd';
+const { Title } = Typography;
 function Index() {
   return (
     <>
@@ -12,11 +13,8 @@ function Index() {
         <meta property="og:url" content="https://azbykamebeli.ru/catalog/dvuspalnye/1022598/?offerId=1023591" />
       </Head>
       <div>
-        <div>
-          <Link href="/">Главная</Link>
-          <Link href="/users">Пользователи</Link>
-        </div>
-        <h1>Main page</h1>
+        
+        <Title level={2}>Main page</Title>
       </div>
     </>
   );

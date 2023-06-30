@@ -1,18 +1,19 @@
 
 import Link from "next/link";
-
+import { Typography } from 'antd';
+const { Title, Text } = Typography;
 
 function Users({ data }) {
 
   return (
     <div>
-      <h1>Список товаров</h1>
+      <Title level={2}>Список товаров</Title>
      
         <ul>
           {data.offers.map((item) => (
             <li key={item.item_id}>
               <Link href={`/users/${item.offer_id}`}>
-                <p>{item.offer_name}</p>
+                <Text>{item.offer_name}</Text>
               </Link>
             </li>
           ))}
@@ -31,7 +32,7 @@ export async function getStaticProps() {
       const response = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ page: 1, limit: 10, query: "" }),
+        body: JSON.stringify({ page: 1, limit: 20, query: "" }),
       });
   
       if (!response.ok) {
