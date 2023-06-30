@@ -1,20 +1,52 @@
 import { useRouter } from "next/router";
 
-export default function ({user}) {
+export default function ({item}) {
   const { query } = useRouter();
 
   return (
     <div>
-      <h1> Пользователь c id {query.id}</h1>
-      <p>Имя пользователя - {user.name}</p>
+      <h1> Товар c id {query.id}</h1>
+      <p>Название - {item.offer_name}</p>
+      <p>Описание: {item.display_properties[0].VALUE}</p>
     </div>
   );
 }
+// export async function getServerSideProps(context) {
+ 
+//   console.log(context);
+//   return {
+//     props: {},
+//   };
+// }
+
 
 export async function getServerSideProps({params}) {
-  const response = await fetch(`https://jsonplaceholder.typicode.com/users/${params.id}`);
-  const user = await response.json();
-  return {
-    props: {user},
-  };
-}
+    try {
+      const url = `https://pim.impermebel.ru/offers/api/offer_detail`;
+      let data = JSON.stringify({
+        offer_id: params.id
+      });
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: data,
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
+      }
+  
+      const item = await response.json();
+      console.log(item);
+  
+      return {
+        props: { item },
+      };
+    } catch (error) {
+      console.error(error);
+      console.log(params.id);
+      return {
+        props: {item: {}},
+      };
+    }
+  }

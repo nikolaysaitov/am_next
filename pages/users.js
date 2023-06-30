@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-function Users({users}) {
+function Users({ data }) {
 
 
   return (
     <div>
-      <h1>Users list</h1>
+      <h1>Список товаров</h1>
       <ul>
-      {users.map(user =>
-                    <li key={user.id}>
-                        <Link href={`/users/${user.id}`}>
-                            <p>{user.name}</p>
+      {data.offers.map(item =>
+                    <li key={item.item_id}>
+                        <Link href={`/users/${item.offer_id}`}>
+                            <p>{item.offer_name}</p>
                         </Link>
                     </li>
                 )}
@@ -21,11 +21,28 @@ function Users({users}) {
 }
 export default Users;
 
-export async function getStaticProps() {
-    const response = await fetch('https://jsonplaceholder.typicode.com/users')
-    const users =  await response.json()
+// export async function getStaticProps() {
+//     const response = await fetch('https://jsonplaceholder.typicode.com/users')
+//     const users =  await response.json()
 
-    return { 
-        props: {users} }
-  }
+//     return { 
+//         props: {users} }
+//   }
    
+  
+export async function getStaticProps() {
+    const url = "https://pim.impermebel.ru/offers/api/offers";
+  
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ page: 1, limit: 10, query: "" }),
+      });
+      const data = await response.json();
+      console.log(data);
+      return {
+        props: { data },
+      };
+    
+  }
+  

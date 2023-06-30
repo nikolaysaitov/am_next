@@ -1,6 +1,9 @@
 import Link from "next/link";
 import Head from "next/head";
+import https from "https";
+import axios from "axios";
 
+import { Buffer } from "buffer";
 function Index() {
   return (
     <>
@@ -22,3 +25,26 @@ function Index() {
   );
 }
 export default Index;
+
+// export async function getStaticProps() {
+//     const url = "https://pim.impermebel.ru/offers/api/offers";
+  
+//     try {
+//       const response = await fetch(url, {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({ page: 1, limit: 10, query: "" }),
+//       });
+//       const data = await response.json();
+//       console.log(data);
+//       return {
+//         props: { data },
+//       };
+//     } catch (error) {
+//       console.log(error);
+//       return {
+//         props: { data: null },
+//       };
+//     }
+//   }
+  
