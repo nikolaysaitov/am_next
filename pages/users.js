@@ -9,9 +9,9 @@ function Users({ data }) {
     <div>
       <Title level={2}>Список товаров</Title>
      
-        <ul  itemscope itemtype="http://schema.org/Product">
+        <ul itemscope itemtype="http://schema.org/Product">
           {data.offers.map((item) => (
-            <li key={item.item_id}>
+            <li itemscope itemtype="https://schema.org/ListItem" key={item.item_id}>
               <Link href={`/users/${item.offer_id}`}>
                 <Text itemprop="name">{item.offer_name}</Text>
               </Link>
