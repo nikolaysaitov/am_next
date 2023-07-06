@@ -2,12 +2,12 @@ import { useRouter } from "next/router";
 
 export default function ({item}) {
   const { query } = useRouter();
-
+console.log(item)
   return (
-    <div>
+    <div itemscope itemtype="http://schema.org/Product">
       <h1> Товар c id {query.id}</h1>
-      <p>Название - {item.offer_name}</p>
-      <p>Описание: {item.display_properties[0].VALUE}</p>
+      <p itemprop="name">Название - {item.offer_name}</p>
+      <p itemprop="description">Описание: {item.display_properties[0].VALUE}</p>
     </div>
   );
 }
