@@ -9,11 +9,11 @@ function Users({ data }) {
     <div>
       <Title level={2}>Список товаров</Title>
      
-        <ul itemscope itemtype="http://schema.org/Product">
+        <ul itemScope itemType="http://schema.org/Product">
           {data.offers.map((item) => (
-            <li itemscope itemtype="https://schema.org/ListItem" key={item.item_id}>
+            <li itemScope itemType="http://schema.org/Offer" key={item.item_id}>
               <Link href={`/users/${item.offer_id}`}>
-                <Text itemprop="name">{item.offer_name}</Text>
+                <Text  itemProp="name">{item.offer_name}</Text>
               </Link>
             </li>
           ))}
