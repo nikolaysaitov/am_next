@@ -36,7 +36,7 @@ export default function ({ item }) {
 export async function getServerSideProps({ params, req, res }) {
   res.setHeader(
     'Cache-Control',
-    'public, s-maxage=10, stale-while-revalidate=59'
+    'public, s-maxage=600, stale-while-revalidate=601'
   )
   try {
     const url = `https://pim.impermebel.ru/offers/api/offer_detail`;
