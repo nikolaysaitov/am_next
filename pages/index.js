@@ -1,8 +1,16 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
+
 import Head from "next/head";
-import { Typography } from 'antd';
+import { Typography } from "antd";
 const { Title } = Typography;
 function Index() {
+  const router = useRouter();
+
+  // Проверка наличия кеша
+  const isCached = !router.isFallback;
+
+  console.log("Используются кешированные данные:", isCached);
   return (
     <>
       <Head>
@@ -13,11 +21,9 @@ function Index() {
         <meta property="og:url" content="https://azbykamebeli.ru/catalog/dvuspalnye/1022598/?offerId=1023591" />
       </Head>
       <div>
-        
         <Title level={2}>Main page</Title>
       </div>
     </>
   );
 }
 export default Index;
-
