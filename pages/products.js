@@ -9,9 +9,10 @@ function Products({ data }) {
   return (
     <div>
        <Head>
-        <meta keywords="Метатэги от Next js" content="website" />
-        <meta property="og:title" content="Матрасы из Азбуки мебели " />
-        <meta property="og:description" content="Матрасы" />
+       <title>Список товаров</title>
+        <meta keywords="Метатэги" content="website" />
+        <meta property="og:title" content="Каталог товаров" />
+        <meta property="og:description" content="Матрасы, кровати, диваны и много другой мебели в наших магазинах" />
       </Head>
       <Title level={2}>Список товаров</Title>
 
