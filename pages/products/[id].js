@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Head from "next/head";
 import { Image } from "antd";
 import styles from './[id].module.css';
 
@@ -8,12 +9,21 @@ export default function ({ item }) {
   const { query } = useRouter();
   console.log(item);
   return (
+    <>
+     <Head>
+        <meta keywords="Метатэги товара Next js" content={query.id} />
+        <meta property="og:title" content={item.offer_name} />
+        <meta property="og:description" content={item.display_properties[0].VALUE} />
+        <meta property="og:image" content="https://azbykamebeli.ru/upload/iblock/012/0122b0c562795bacf35b52e539f9114b.jpg?resize=w[1000]h[750]f[t]fc[ffffff]" />
+      </Head>
     <div className={styles.product} itemScope itemType="http://schema.org/Product">
       <h1> Товар c id {query.id}</h1>
       <Image width={200} src="https://azbykamebeli.ru/upload/iblock/012/0122b0c562795bacf35b52e539f9114b.jpg?resize=w[1000]h[750]f[t]fc[ffffff]" />
       <p itemProp="name">Название - {item.offer_name}</p>
       <p itemProp="description">Описание: {item.display_properties[0].VALUE}</p>
     </div>
+    </>
+    
   );
 }
 
