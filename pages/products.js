@@ -33,7 +33,7 @@ function Products({ data }) {
                 <HeartOutlined key="ellipsis"/>,
               ]}
             >
-              <Link itemProp="link" title={item.offer_name} href={`/products/${item.offer_id}`}>
+              <Link itemProp="url" title={item.offer_name} href={`/products/${item.offer_id}`}>
                 <Text itemProp="name">{item.offer_name}</Text>
                 <Meta title={item.color} description={item.offer_id} />
               </Link>
