@@ -12,3 +12,9 @@
     justify-content: space-between;
     
 }
+
+.container{
+    width: 1200px;
+    text-align: center;
+    margin: auto;
+}
