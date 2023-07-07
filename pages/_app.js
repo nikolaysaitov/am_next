@@ -1,5 +1,5 @@
 import NextNProgress from "nextjs-progressbar";
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from "@ant-design/icons";
+import { AppstoreOutlined, MailOutlined, ShoppingOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 import { useState } from "react";
 import Link from "next/link";
@@ -12,7 +12,7 @@ const items = [
   {
     label: <Link href="/products">Товары</Link>,
     key: "SubMenu",
-    icon: <SettingOutlined />,
+    icon: <ShoppingOutlined />,
   },
 ];
 

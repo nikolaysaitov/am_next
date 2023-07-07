@@ -1,16 +1,10 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
+
 
 import Head from "next/head";
 import { Typography } from "antd";
 const { Title } = Typography;
 function Index() {
-  const router = useRouter();
 
-  // Проверка наличия кеша
-  const isCached = !router.isFallback;
-
-  console.log("Используются кешированные данные:", isCached);
   return (
     <>
       <Head>
@@ -21,7 +15,9 @@ function Index() {
         <meta property="og:url" content="https://azbykamebeli.ru/catalog/dvuspalnye/1022598/?offerId=1023591" />
       </Head>
       <div>
-        <Title level={2}>Main page</Title>
+        <Title level={2}>Тестовый сайт на next js</Title>
+        <p>Страница с товарами и каждая отдельная страница с товаром рендерятся на сервере, что положительно влияет на SEO</p>
+        <p>Для проверки микроразметки можно воспользоваться <a href="https://schema.org/">schema.org</a>, используя url страницы с товарами/товара данного сайта</p>
       </div>
     </>
   );
