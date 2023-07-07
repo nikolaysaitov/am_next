@@ -3,6 +3,7 @@ import { AppstoreOutlined, MailOutlined, ShoppingOutlined } from "@ant-design/ic
 import { Menu } from "antd";
 import { useState } from "react";
 import Link from "next/link";
+import styles from "./_app.module.css";
 const items = [
   {
     label: <Link href="/">Главная</Link>,
@@ -24,7 +25,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
+      <Menu className={styles.aaa} onClick={onClick}  mode="horizontal" items={items} style={{ color: "black"}}/>
       <NextNProgress color="#fb8817" startPosition={0.3} stopDelayMs={200} height={3} showOnShallow={true} />
       <Component {...pageProps} />
     </>

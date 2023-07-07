@@ -1,0 +1,7 @@
+.ant-menu-title-content a {
+    color: black !important;
+}
+
+.ant-menu-item a::before{
+    color: black !important;
+}
