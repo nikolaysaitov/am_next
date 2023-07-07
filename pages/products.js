@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Typography, Card } from "antd";
+import Head from "next/head";
 import styles from "./products.module.css";
 import { ShoppingCartOutlined, HeartOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 const { Title, Text } = Typography;
@@ -7,6 +8,11 @@ const { Meta } = Card;
 function Products({ data }) {
   return (
     <div>
+       <Head>
+        <meta keywords="Метатэги от Next js" content="website" />
+        <meta property="og:title" content="Матрасы из Азбуки мебели " />
+        <meta property="og:description" content="Матрасы" />
+      </Head>
       <Title level={2}>Список товаров</Title>
 
       <ul className={styles.products} itemScope itemType="http://schema.org/Product">
@@ -23,6 +29,8 @@ function Products({ data }) {
               }}
               cover={
                 <img
+                width={200}
+                height={150}
                   alt="example"
                   src="https://azbykamebeli.ru/upload/iblock/012/0122b0c562795bacf35b52e539f9114b.jpg?resize=w[1000]h[750]f[t]fc[ffffff]"
                 />
