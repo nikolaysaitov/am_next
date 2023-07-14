@@ -94,24 +94,24 @@ const { Title, Text } = Typography;
 const { Meta } = Card;
 
 function Products({ data, currentPage, totalItems }) {
-  const [currentProductPage, setCurrentProductPage] = useState(1);
+  const [currentProductPage, setCurrentProductPage] = useState(currentPage);
   const [loading, setLoading] = useState(false);
-  const [offersPerPage, setOffersPerPage] = useState([]);
+  const [offersPerPage, setOffersPerPage] = useState(data.offers);
 
-  // useEffect(() => {
-  //   setLoading(true);
+  useEffect(() => {
+    setLoading(true);
 
-  //   // Simulate API request delay for demonstration purposes
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //     handlePagination();
-  //   }, 200);
-  // }, [currentProductPage]);
+    // Simulate API request delay for demonstration purposes
+    setTimeout(() => {
+      setLoading(false);
+      handlePagination();
+    }, 200);
+  }, [currentProductPage]);
 
-  // const handlePagination = () => {
-  //   const offers = data.offers.slice((currentProductPage - 1) * 8, currentProductPage * 8);
-  //   setOffersPerPage(offers);
-  // };
+  const handlePagination = () => {
+    const offers = data.offers.slice((currentProductPage - 1) * 8, currentProductPage * 8);
+    setOffersPerPage(offers);
+  };
 
   return (
     <div className={styles.container}>
@@ -121,7 +121,7 @@ function Products({ data, currentPage, totalItems }) {
       <Title level={2}>Список товаров</Title>
       <Spin spinning={loading}>
         <ul className={styles.products} itemScope itemType="http://schema.org/Product">
-          {data.offers.map((item, index) => (
+          {offersPerPage.map((item, index) => (
             <Card
               className={styles.product}
               itemScope
@@ -149,7 +149,7 @@ function Products({ data, currentPage, totalItems }) {
           ))}
         </ul>
       </Spin>
-      {/* <Pagination current={currentProductPage} pageSize={8} total={totalItems} onChange={(page) => setCurrentProductPage(page)} /> */}
+      <Pagination current={currentProductPage} pageSize={8} total={totalItems} onChange={(page) => setCurrentProductPage(page)} />
     </div>
   );
 }
@@ -163,7 +163,7 @@ export async function getStaticProps() {
     const response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ page: 1, limit: 20, query: "" }),
+      body: JSON.stringify({ page: 1, limit: 32, query: "" }),
     });
 
     if (!response.ok) {
